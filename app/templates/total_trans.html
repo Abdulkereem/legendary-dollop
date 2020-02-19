@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('profile') }}">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('profile_update') }}">My Profile</a>
+            </li>
+
+
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="#">Welcome !</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row" >
+					<div class="col-md-12">
+
+						<h2 class="page-title" style="margin-top:10%">Welcome {{ list }}  <span style="text-align: center;margin-left: 300px;">Your Wallet No : {{ Acc }}</span></h2>
+                        <hr>
+                        <div class="container">
+                            <br><br>
+                            <table class="table">
+                                <thead>
+                                    <tr >
+                                        <th> Your Transactions</th>
+
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                <tr style="background-color:#3cab87;">
+                                    <td><b>Date</b></td>
+                                    <td><b>From</b></td>
+                                    <td> <b>To</b> </td>
+                                    <td><b>Amount</b> </td>
+                                    <td><b>Type</b> </td>
+
+                                </tr>
+                                {% for transaction in transactions %}
+                                <tr>
+                                    <td>{{ transaction[3] }}</td>
+                                    <td>{{ transaction[1] }}</td>
+                                    <td>{{transaction[2] }}</td>
+                                    <td>{{ transaction[4] }}</td>
+                                    <td>Wallet Transfer</td>
+                                </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+						</div>
+                    </div>
+
+					</div>
+				</div>
+
+
+
+</body>
+</html>

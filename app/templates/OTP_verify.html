@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add _Amount</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('profile') }}">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('profile_update') }}">My Profile</a>
+            </li>
+
+
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="#">Welcome !</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container">
+
+    <center>
+<div>
+<h3>Enter OTP</h3>
+<br>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=alert >
+            {% for message in messages %}
+                <P><b style="color: #ff1010;">{{ message }}</b></P>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
+<form method="post" action="/transfer">
+            <div class="form-group">
+                        <label class="col-sm-2 control-label">Amount :</label>
+                            <div class="col-sm-2">
+                            <input type="text" name="Amount" id="Amount"  class="form-control" value="{{ Amount  }}" readonly>
+                            </div>
+
+                        <label class="col-sm-2 control-label">Wallet id: </label>
+                            <div class="col-sm-2">
+                            <input type="" name="wt_id" id="wt_id"  class="form-control" value="{{ wt_id }}" readonly>
+                            <span id="user-availability-status" style="font-size:12px;"></span>
+
+                            </div>
+
+                        <label class="col-sm-2 control-label">OTP id: </label>
+                            <div class="col-sm-2">
+                            <input type="" name="OTP" id="OTP"  class="form-control" required="required">
+                            <span id="" style="font-size:12px;"></span>
+
+                            </div>
+                        <br><br><br>
+                        <input class="btn" style="background-color:#343a40;color: white;" type="submit" value="Verify">
+                    </div>
+        </form>
+</div>
+    </center>
+</div>
+</body>
+</html>
